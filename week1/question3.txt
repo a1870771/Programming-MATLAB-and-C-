@@ -1,0 +1,25 @@
+-----Test Case 1-----
+Test case: Population = 1306000
+Input: 1306000
+Expected output: 108.9
+Actual Output: 108.996937
+Note: Again, failure to account for the way MATLAB displays floting point numbers lead to the unprecidented quantity of decimal places.
+
+-----Test Case 2-----
+Test Case: Population = 0
+Input: 0
+Expected Output: Undefined
+Actual Output: Infinity
+Note: This is an interesting demonstration of how MATLAB handles dividing by 0. Intuitively, the answer is definitley infinity but usually performing an operation like this returns an undefined value.
+
+-----Test Case 3-----
+Test Case: Population < 0
+Input: -100
+Expected Output: Negative Error
+Actual Output: Negative Error
+
+-----Test Case 4-----
+Test Case: Population isn't an integer
+Input: 350.65
+Expected Output: Integer Error
+Actual Output: Integer Error

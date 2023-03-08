@@ -1,0 +1,53 @@
+-----Test Case 1-----
+Test case: positive integers
+Input: 101, 102, 103, 104, 105
+Expected Output:    101
+
+                    102
+    
+                    103
+
+                    104
+
+                    105
+
+Actual Output:      101
+
+                    102
+    
+                    103
+
+                    104
+
+                    105
+
+-----Test Case 2-----
+Test case: Positive real numbers
+Input: 150, 136.4, 210.1, 83.04, 100
+Expected output:    150
+
+                    136.4000
+
+                    210.1000
+
+                    83.0400
+
+                    100
+
+Actual output:      150
+
+                    136.4000
+
+                    210.1000
+
+                    83.0400
+
+                    100
+Note: If I wanted to display the numbers to a more suitable number of significant figures, I would use the fprintf() function, but as the disp() function was specifically recommended in the question I settled for the plentiful decimal places.
+
+-----Test Case 3-----
+Test Case: Negative integers
+Input: 101, 102, -103, 104, 105
+Expected output: Negative Error after entering -103
+Actual Output: Negative Error after entering -103
+

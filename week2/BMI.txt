@@ -1,0 +1,4 @@
+input: weight. height. expected output: BMI.
+       50.0    1.45    23.78
+       120.0   1.98    30.61
+       72.0    1.8     22.22

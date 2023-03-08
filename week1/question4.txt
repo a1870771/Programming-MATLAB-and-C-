@@ -1,0 +1,25 @@
+-----Test Case 1-----
+Test Case: Population = 1306000 (Adelaide)
+Input: 1306000
+Expected Output: 1.44 million.
+Actual Output: 14372249.620979
+Note: Once again MATLAB is throwing many many significant figures at me, but happily if it were whittled down to 3 S.F then 1.44 million would be correct.
+
+-----Test Case 2-----
+Test Case: Population = 1
+Input: 1
+Expected Output: 11
+Actual Output: 11.004785
+Note: This is an interesting one, because even though the perPersonCost = $16, since just under 70% of people drive to work the total average cost is $11, even when there's only one person to account for. 
+
+-----Test Case 3-----
+Test Case: Population < 0
+Input: -50
+Expected Output: Negative Error
+Actual Output: Negative Error
+
+----Test CAse 4-----
+Test Case: Population not an integer
+Input: 1.306
+Expected Output: Integer Error
+Actual Output: Integer Error

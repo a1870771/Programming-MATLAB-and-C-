@@ -1,0 +1,19 @@
+-----Test Case 1-----
+Test Case: Population = 0
+Input: 0
+Expected Output: 0
+Actual Output: 0
+
+-----Test Case 2-----
+Test Case: Population = 1306000 (Adelaide population)
+Input: 1306000
+Expected Output: 275237.1
+Actual Output: 275237.091675
+Note: The discrepancy between expected and actual outputs arises from the number
+of significant figures MATLAB defaults to with its float-type numbers, and my failure to account for this. Neither of these values are equal to the real-world value, it's important to note.
+
+-----Test Case 3-----
+Test Case: Population < 0
+Input: -3
+Expected Output: Error
+Actual Output: Error

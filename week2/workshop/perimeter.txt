@@ -1,0 +1,4 @@
+width      height    perimeterRect
+5          11        32.00
+1.1        1.1       4.40
+100        1000      2200.00

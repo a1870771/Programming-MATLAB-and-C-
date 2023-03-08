@@ -1,0 +1,3 @@
+name      output
+Jack      Your name is: Jack
+X Æ A-12  Your name is: X Æ A-12

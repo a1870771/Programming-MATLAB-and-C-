@@ -1,0 +1,18 @@
+-----Test Case 1-----
+Test Case: height = 1, depth = 2, length = 3
+Input: 1, 2, 3
+Expected Output: 6
+Actual Output: 6
+
+-----Test Case 2-----
+Test Case: height = 1, depth = -2, length = -3
+Input: 1, -2, -3
+Expected Output: Error
+Actual Output: Error
+
+-----Test Case 3-----
+Test Case: height = pi, depth = 100, length = 0.5
+Input: pi, 100, 0.5
+Expected Output: 157.08
+Actual Output: 157.08
+

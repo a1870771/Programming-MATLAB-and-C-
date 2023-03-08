@@ -1,0 +1,3 @@
+animal      name        activity        output
+frog        Gerome      grooving        I saw your frog, Gerome, grooving in my garden!
+octopus     Oliver      making a mess   I saw your octopus, Oliver, making a mess in my garden!

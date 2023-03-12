@@ -1,0 +1,4 @@
+Input   Expected Result      Actual Result
+99       no output
+100     'Divisible by four'  'Divisible by four'
+8       'Divisible by four'  'Divisible by four'

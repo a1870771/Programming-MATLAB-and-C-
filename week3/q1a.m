@@ -1,10 +1,13 @@
 clc;clear;
-A=[-10:0.5:10];
-B=zeros(size(A));
+
+A =  [-1 -2 -3 -4 -5];
+B = zeros(size(A));
+
 
 for i = 1:length(A)
     B(i) = A(i)^3;
 end
 
-disp(B);
-
+fprintf("[");
+fprintf('%.4f ', B);
+fprintf(']\n');

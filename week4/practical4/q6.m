@@ -1,25 +1,20 @@
 clc; clear;
 
-imageData=[];
-imSize=100;
-numRows=imSize;
-numCols=imSize;
+imageData=imread('Kand.png');
+[numRows, numCols]=size(imageData);
+newImage=[];
 
 for row=[1:numRows]
     imageRow=[];
     for col=[1:numCols]
-        pixelVal=uint8((row+col)/(imSize*2) * 255);
-        imageRow=[imageRow pixelVal];
+        pixelVal=imageData(row, col);
+        imageRow=[pixelVal imageRow];
     end
-    imageData=[imageData; imageRow];
+    newImage=[imageRow; newImage];
 end
 
-imageData = [rot90(imageData, 2), rot90(imageData); rot90(imageData, -1), imageData]
+imshow(newImage);
 
-imshow(imageData);
+imwrite(newImage,'test6.png');
 
-imwrite(imageData,'test5.png');
-
-newImageData=imread('test5.png');
-
-whos newImageData;
+newImageData=imread('test6.png');

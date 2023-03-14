@@ -1,5 +1,7 @@
 clear;
 clc;
+global seqToggle;
+
 %%%%%%%%%%%%%%%%%%%%   Create ui components   %%%%%%%%%%%%%%%%%%%%
 fig = uifigure('KeyPressFcn', @keyboard);
 
@@ -14,61 +16,52 @@ stopBtn = uibutton(fig, ...
     'BackgroundColor', 'w', ...
     'ButtonPushedFcn', @stop);
 
-%mode = uibuttongroup(fig, ... 
-%    'Position', [10 330 90 79], ...
-%    'SelectionChangedFcn',@modeSelection);
-
-
-%keyBtn = uitogglebutton(mode, ...
-%    'Text', 'Keyboard', ...
-%    'position', [10 50 70 22]);
-%keyBtn.Value=1;
-%mouseBtn = uitogglebutton(mode, ...
-%    'Text', 'Mouse', ...
-%    'Position',[10 28 70 22]);
-%mouseBtn.Value=0;
-%seqBtn = uitogglebutton(mode, ...
-%    'Text', 'Sequencer', ...
-%    'Position',[10 6 70 22]);
-%seqBtn.Value=0;
 
 kickBtn = uibutton(fig, 'push', ...
     'Text', 'Kick (A)', ...
     'Position', [120, 70, 70, 70], ...
     'Backgroundcolor', 'w', ...
     'ButtonPushedFcn', @kickTrig);
-kickBtn.Enable='on';
 snareBtn = uibutton(fig, 'push', ...
     'Text','Snare (D)', ...
     'Position', [190, 70, 70, 70], ...
     'Backgroundcolor', 'w', ...
     'ButtonPushedFcn', @snareTrig);
-snareBtn.Enable='on';
 hhBtn = uibutton(fig, 'push', ...
     'Text', 'Hihat (T)', ...
     'Position', [260, 70, 70, 70], ...
     'Backgroundcolor', 'w', ...
     'ButtonPushedFcn', @hhTrig);
-hhBtn.Enable='on';
-
-
-
-function play(~,~)
-seqGrid = zeros(16,3);
-    for i = 1:16
-            if seqGrid(i,1) == 1
-                kick();
-            end
-            if seqGrid(i,2) == 1
-                snare();
-            end
-            if seqGrid(i,3) == 1
-                hh();
-            end
-            pause(1);
-            disp("Playing");
+for y = 1:3
+    for x = 1:16
+    seqToggle(y,x) = uicontrol(fig, ...
+        'String', ' ', ...
+        'Position',[-10+(30*x) 340-(30*y) 27 27], ...
+        'BackgroundColor', 'w', ...
+        'Callback', ['seqToggleClb(y,x);' ]);
     end
 end
+
+function seqToggleClb(y,x)
+    global seqToggle;
+    h = seqToggle(y,x);
+    set(h, 'BackgroundColor', 'g');
+end
+%seqGrid = zeros(16,3);
+%    for i = 1:16
+%            if seqGrid(i,1) == 1
+%                kick();
+%            end
+%            if seqGrid(i,2) == 1
+%                snare();
+%            end
+%            if seqGrid(i,3) == 1
+%                hh();
+%            end
+%            pause(1);
+%            disp("Playing");
+%    end
+
 %%%%%%%%%%%%%%%%%%%%    Sample Triggers   %%%%%%%%%%%%%%%%%%%%
 function kick()
     [y, Fs] = audioread('kick.wav');
@@ -118,3 +111,22 @@ function keyboard(~,event)
     end
 end
 
+
+
+%mode = uibuttongroup(fig, ... 
+%    'Position', [10 330 90 79], ...
+%    'SelectionChangedFcn',@modeSelection);
+
+
+%keyBtn = uitogglebutton(mode, ...
+%    'Text', 'Keyboard', ...
+%    'position', [10 50 70 22]);
+%keyBtn.Value=1;
+%mouseBtn = uitogglebutton(mode, ...
+%    'Text', 'Mouse', ...
+%    'Position',[10 28 70 22]);
+%mouseBtn.Value=0;
+%seqBtn = uitogglebutton(mode, ...
+%    'Text', 'Sequencer', ...
+%    'Position',[10 6 70 22]);
+%seqBtn.Value=0;

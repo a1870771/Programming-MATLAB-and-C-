@@ -1,0 +1,47 @@
+.box{
+    background-color: black;
+    font-family: 'VT323', monospace;
+    color: aliceblue;
+    height: 700px;
+    width: 1260px;
+}
+
+.header{
+    display: flex;
+    align-items: baseline;
+    justify-content:space-between;
+    padding: 0px 30px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+h2{
+    font-size: 40px;
+}
+table{
+    margin: 0px 40px;
+}
+td{
+    border: 1px solid aliceblue;
+    height: 25px;
+    width: 25px;
+}
+
+.label{
+    border: none;
+    width: auto;
+    padding-right: 5px;
+    text-align: center;
+}
+.label1{
+    border: none;
+    width: auto;
+    padding-right: 5px;
+    text-align: center;
+    color: greenyellow;
+}
+.green{
+    border-color: greenyellow;
+}

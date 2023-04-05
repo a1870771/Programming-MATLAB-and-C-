@@ -1,90 +1,80 @@
 clear;
 clc;
-global seqToggle;
 
 %%%%%%%%%%%%%%%%%%%%   Create ui components   %%%%%%%%%%%%%%%%%%%%
-fig = uifigure('position', [300 300 1280 720], 'KeyPressFcn', @keyboard);
+fig = uifigure('position', [300 300 1280 720], 'WindowKeyPressFcn', @keyboard);
 bg = uihtml(fig, 'HTMLSource','background.html', 'position',[0 0 1280 720]);
-
-button = uihtml(fig, 'HTMLSource', 'button.html', 'Butt')
-
-playBtn = uibutton(fig, ...
-    'Text', 'Play', ...
-    'Position', [50,105, 70, 35], ...
-    'BackgroundColor', 'w', ...
-    'ButtonPushedFcn', @play);
-stopBtn = uibutton(fig, ...
-    'Text', 'Stop', ...
-    'Position', [50, 70, 70, 35], ...
-    'BackgroundColor', 'w', ...
-    'KeyPressFcn', @keyboard);
-
 
 kickBtn = uibutton(fig, 'push', ...
     'Text', 'Kick (A)', ...
-    'Position', [120, 70, 70, 70], ...
+    'Position', [120, 225, 70, 70], ...
     'Backgroundcolor', 'w', ...
     'ButtonPushedFcn', @kickTrig);
 snareBtn = uibutton(fig, 'push', ...
     'Text','Snare (D)', ...
-    'Position', [190, 70, 70, 70], ...
+    'Position', [220, 225, 70, 70], ...
     'Backgroundcolor', 'w', ...
     'ButtonPushedFcn', @snareTrig);
 hhBtn = uibutton(fig, 'push', ...
     'Text', 'Hihat (T)', ...
-    'Position', [260, 70, 70, 70], ...
+    'Position', [319, 225, 70, 70], ...
     'Backgroundcolor', 'w', ...
     'ButtonPushedFcn', @hhTrig);
+
+axes1 = axes(fig, "Position",[10 10 100 100])
+axes2 = axes(fig, "Position",[20 20 100 100])
+masterSlider = knobslider(axes1,0.5,'callback', @masterVol)
+
 for y = 1:3
     for x = 1:16
     seqToggle(y,x) = uicontrol(fig, ...
         'String', ' ', ...
-        'Position',[-10+(30*x) 340-(30*y) 27 27], ...
+        'Position',[-10+(30*x) 400-(30*y) 27 27], ...
         'BackgroundColor', 'w', ...
         'Callback', ['seqToggleClb(y,x);' ]);
     end
 end
 
-function seqToggleClb(y,x)
-    global seqToggle;
-    h = seqToggle(y,x);
-    set(h, 'BackgroundColor', 'g');
+%%%%%%%%%%%%%%%%%%%%     Sequencer     %%%%%%%%%%%%%%%%%%%%
+function seq()
+    seqGrid = [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0;
+               0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0;
+               0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1];
+    for i = 1:16
+        if seqGrid(1,i) == 1
+            kickTrig();
+        end
+        if seqGrid(2,i) == 1
+            snareTrig();
+        end
+        if seqGrid(3,i) == 1
+            hhTrig();
+        end
+        pause(0.125);
+        disp(i);
+    end
 end
-%seqGrid = zeros(16,3);
-%    for i = 1:16
-%            if seqGrid(i,1) == 1
-%                kick();
-%            end
-%            if seqGrid(i,2) == 1
-%                snare();
-%            end
-%            if seqGrid(i,3) == 1
-%                hh();
-%            end
-%            pause(1);
-%            disp("Playing");
-%    end
 
 %%%%%%%%%%%%%%%%%%%%    Sample Triggers   %%%%%%%%%%%%%%%%%%%%
 function kick()
     [y, Fs] = audioread('kick.wav');
     player = audioplayer(y, Fs);
     play(player);
-    pause(0.5);
+    pause(0.05);
 end
 
 function hh()
     [y, Fs] = audioread('hh.wav');
     player = audioplayer(y, Fs);
     play(player);
-    pause(0.5);
+    pause(0.05);
 end
 
 function snare()
     [y, Fs] = audioread('snare.wav');
     player = audioplayer(y, Fs);
     play(player);
-    pause(0.5);
+    pause(0.05);
 end
 
 %%%%%%%%%%%%%%%%%%%%    Button Callbacks    %%%%%%%%%%%%%%%%%%%%
@@ -99,12 +89,12 @@ function hhTrig(~,~)
     hh();
 end
 
-
 %%%%%%%%%%%%%%%%%%%%    Keyboard Listeners    %%%%%%%%%%%%%%%%%%%%
-function keyboard(~,event)
+function keyboard(fig,event)
     switch event.Character
         case 'a'
             kick();
+            seq();
         case 't'
             hh();
         case 'd'

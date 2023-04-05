@@ -1,0 +1,12 @@
+1) GUI (HTML/CSS/Javascript -> MATLAB uihtml() component). Take influence from the functionality of something like a TR-808 in the way sequences are programmed, and aim for an aesthetic similar to pong or other extremely retro software. Black and white, no colour.
+
+2) Sample Playback (MATLAB @keypress callback function). A keypress triggers a callback which tests if the key pressed matches one of the ~five keys that trigger samples, if it does then it plays the corresponding sample (a .wav file in the top level directory with respect to the main script.
+
+3) Volume sliders (MATLAB class). Find third party code which will allow for GUI customization of a slider so that it matches the aesthetic, rather than the stock uislider() component, which looks sordid. There will be one slider for the level of each sample as well as a master level.
+
+4) Sequencer playback function. MATLAB 4x16 matrix of 0 or 1, one column is read every beat (defined by a tempo slider) and if any rows contain a 1, a sample is triggered with the same functions as in (2) which corresponds to the row in which the 1 occurred.
+
+5) Sequencer programming functions. Enable user to turn on or off one of 16 switches which correspond to a subdivision of the matrix in (4). Turning on a switch writes a one into that column, on the row defined by one of four mode selecting buttons, in the same way as a TR-808.
+
+Afterthoughts:
+ - Integrated into the HTML, a help screen which appears upon clicking an (i) button. This includes instructions on how to use the software for anyone without prior drum machine experience.

@@ -6,8 +6,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script type="text/javascript">      
+        function setup(htmlComponent) {           
+            let bg = document.getElementById("background");
+            bg.addEventListener("click", function(event) {
+                htmlComponent.sendEventToMATLAB("bgClicked",num);
+            });
+        }
+     </script>
 </head>
-<body>
+<body id="background">
     <div class="box">
         <div class="header">
             <h1>MATLAB Drum Machine</h1>

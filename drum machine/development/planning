@@ -1,6 +1,6 @@
 1) GUI (HTML/CSS/Javascript -> MATLAB uihtml() component). Take influence from the functionality of something like a TR-808 in the way sequences are programmed, and aim for an aesthetic similar to pong or other extremely retro software. Black and white, no colour.
 
-2) Sample Playback (MATLAB @keypress callback function). A keypress triggers a callback which tests if the key pressed matches one of the ~five keys that trigger samples, if it does then it plays the corresponding sample (a .wav file in the top level directory with respect to the main script.
+2) Sample Playback (MATLAB @keypress callback function). A keypress triggers a callback which tests if the key pressed matches one of the four keys that trigger samples, if it does then it plays the corresponding sample (a .wav file in the top level directory with respect to the main script.
 
 3) Volume sliders (MATLAB class). Find third party code which will allow for GUI customization of a slider so that it matches the aesthetic, rather than the stock uislider() component, which looks sordid. There will be one slider for the level of each sample as well as a master level.
 

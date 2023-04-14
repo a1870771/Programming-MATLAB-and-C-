@@ -1,28 +1,58 @@
 clc; clear;
 
 %%%%%%%%%%%%%%%%%%%%    CREATE UI COMPONENTS    %%%%%%%%%%%%%%%%%%%%
-fig = figure('name', 'Tetris', ...
-    'units','pix', ...
+fig = figure('name', 'Tetris', ...      %game window
     'menubar','none', ...
-    'position',[100 100 650 720], ...
-    'numbertitle', 'off');
-ax1 = axes(fig, ...
+    'position',[150 150 600 700], ...
+    'numbertitle', 'off', ...
+    'KeyPressFcn', @keyboard);
+ax1 = axes(fig, ...                     %game board
     'units', 'pix', ...
-    'Position',[30 30 360 630], ...
+    'Position',[30 40 360 630], ...
     'Box','on', ...
     'xtick',[],'ytick',[], ...
     'xlim',[-1 11], ...
     'YLim',[-1 20]);
-X = [0 .2 0;.2 .8 .2;.2 .8 .8;.8 .2 .8;1 .2 1;0 .2 1;0 .2 0];
-Y = [0 .2 0;.2 .2 .2;.8 .8 .2;.8 .8 .8;1 .2 1;1 .2 0;0 .2 0];
-g1 = repmat([.9 .65 .4],[1,1,3]); % Grey color used throughout.
-% Make the board boarders.
-for col = [-1 10]
-    Xi = X + col; 
-    for row = -1:19
-        patch(Xi,Y+row,g1)
+global x
+global y
+global xPos
+global yPos
+            xPos= 3;
+            yPos= 19;
+x = [0 0.1 0;0.1 0.9 0.1;0.1 0.9 0.9;0.9 0.1 0.9;1 0.1 1;0 0.1 1;0 0.1 0];
+y = [0 0.1 0;0.1 0.1 0.1;0.9 0.9 0.1;0.9 0.9 0.9;1 0.1 1;1 0.1 0;0 0.1 0]; 
+grey = repmat([.9 .65 .4],[1,1,3]);
+
+for i = [-1 10]         %render lhs and rhs borders
+    col = x + i;
+    for j = -1:19
+        row = y + j;
+        patch(col,row,grey)
     end
 end
-for ii = 0:9
-    patch(X+ii,Y-1,g1,'edgecolor','none','handlevis','callback')
+
+for i = 0:9            %renders floor
+    patch(x+i,y-1,grey)
 end
+
+
+function getPos()
+    currPos=[xPos yPos];
+end
+
+function render()
+    getPos()
+    patch(x+currPos(1), y+currpos(2), grey)
+end
+
+
+function keyboard(~,event)
+    switch event.Key
+        case 'rightarrow'
+
+            render()
+        case 'leftarrow'
+
+    end
+end
+

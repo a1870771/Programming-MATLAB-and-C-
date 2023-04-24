@@ -1,7 +1,7 @@
 clc;
 
 %%%%%%%%%%%%%%%%%%%%    INITIALISE ASSETS   %%%%%%%%%%%%%%%%%%%%
-global currentGrid c
+global currentGrid c gameOver
 currentGrid = zeros(40,40);
 nextGrid = zeros(40,40);
 c = [];
@@ -9,7 +9,7 @@ c = [];
 %%%%%%%%%%%%%%%%%%%%    INITIALISE UI COMPONENTS    %%%%%%%%%%%%%%%%%%%%
 fig = figure('name', 'The Game of Life', ...  
     'menubar','none', ...
-    'position',[250 150 800 800], ...
+    'position',[250 150 1100 800], ...
     'numbertitle', 'off', ...
     'KeyPressFcn',@play);
 ax = axes(fig, ...
@@ -19,8 +19,17 @@ ax = axes(fig, ...
     'XTick',[1:40], 'YTick', [1:40], ...
     'XGrid','on', 'YGrid','on', ...
     'TickLength', [0,0.1], ...
+    'Color',[0 0 0.45], ...
     'NextPLot','add', ...
     'ButtonDownFcn',@setInit);
+annotation('textbox',[0.8 .76 .3 .2], ...
+    'String','How to play:','EdgeColor','none', 'FontSize',14)
+annotation('textbox',[0.75 .7 .24 .2], ...
+    'String','Click on a cell with the mouse to give it life. When you are ready, press the spacebar to play. When you wish to exit, press q.','EdgeColor','none', 'FontSize',12)
+annotation('textbox',[0.8 .44 .3 .2], ...
+    'String','The Rules:','EdgeColor','none', 'FontSize',14)
+annotation('textbox',[0.75 .40 .24 .2], ...
+    'String','Each iteration, any living cell with fewer than 2 living neighbours dies of underpopulation. Any living cell with more than 3 living neighbours dies of overpopulation. Any dead cell with exactly 3 living neighbours comes to life as if by reproduction, and any living cell with 2 or 3 living neighbours lives on to the next iteration.','EdgeColor','none', 'FontSize',12)
 
 %%%%%%%%%%%%%%%%%%%%     INITIAL CONDITIONS      %%%%%%%%%%%%%%%%%%%%
 function setInit(ax, ~)
@@ -35,20 +44,20 @@ c = [c patch([X,X+1,X+1,X], ...
 end
 
 %%%%%%%%%%%%%%%%%%%%         GAME LOOP       %%%%%%%%%%%%%%%%%%%%
-function play(~,~)
-global currentGrid;
-iteration = 0;
+function play(~,event)
+global gameOver
 gameOver = false;
+switch event.Key
+    case 'q'
+        gameOver = true;
+end
+global currentGrid;
 while ~gameOver
-    iteration = iteration + 1;
     pause(1);
     %compute next grid
     nextGrid = getNextGrid(currentGrid);
     currentGrid = nextGrid;
     render(currentGrid);
-    if iteration > 20
-        gameOver = true;
-    end
 end
 end
 
@@ -74,20 +83,15 @@ for i = 1:40
 
         if currentGrid(i,j) == 1
             if count > 3 || count < 2
-                nextGrid(i,j) = 0
+                nextGrid(i,j) = 0; % over/under population
+            else
+                nextGrid(i,j) = 1; % survival
             end
         end
-
-
-
-        if count > 3
-            nextGrid(i,j) = 0;    % overpopulation
-        elseif count < 2
-            nextGrid(i,j) = 0;    % underpopulation
-        elseif count == 3 && currentGrid(i,j) == 0
-            nextGrid(i,j) = 1;    % reproduction
-        else
-            nextGrid(i,j) = 1;    % survival
+        if currentGrid(i,j) == 0
+            if count == 3
+                nextGrid(i,j) = 1; % reproduction
+            end
         end
     end
 end

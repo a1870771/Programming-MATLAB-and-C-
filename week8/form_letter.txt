@@ -1,0 +1,3 @@
+name          age  fraction    output
+Jeff Gould    29   0.2         Your name is Jeff Gould, you are 29 years old and your employment fraction is 0.2.
+Jerry Smith   18   0.9         Your name is Jerry Smith, you are 18 years old and your employment fraction is 0.9.  

@@ -1,0 +1,5 @@
+input       output
+3           Your have a Primary level education.
+8           Your have a Secondary level education.
+99          Your have a Tertiary level education.
+-1          You have an issue with your input.

@@ -1,0 +1,5 @@
+input   output
+100     100 degrees Celsius is 212 Fahrenheit
+-20     -20 degrees Celsius is -4 degrees Fahrenheight
+0.1     0 degrees Celsius is 32 degrees Fahrenheight
+

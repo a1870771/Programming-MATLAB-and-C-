@@ -1,0 +1,21 @@
+Conceptual coverage: I made considerable effort to ensure that all of the oulined concepts meantioned in the assessment
+outline have been employed, loops, matrices, vetors, conditional execution and functions are all plainly evident in my code,
+aswell as others mentioned in the practical. 20/20
+
+Value-add: There are many parts of the code which show an extention beyond the minimum understanding required, for example, 
+the implementation of ui components and figures as well as the relevant callback functions and path function of drawing on an 
+axes were all concepts learnt individually through perusing the documentation rather than in the course. The code is all my
+own and as such no outside contributions need be notated. 20/20
+
+Incremental Development: In the development folder there are .m files which showcase the development of each individual
+component of the code one at a time as well as the consturction of the whole project incrementally. They are 
+well-commented in that their functions are described in detail at the top of each file. 20/20
+
+Testing: In the testing.txt file there is evidence for testing of every stage of the program which had a measurable output.
+15/20
+
+Comments and style: Consistent and relevant comments are evident throughout the script, and stylistic convention is adhered
+to in terms of indenting and variable names. 20/20
+
+
+

@@ -1,0 +1,40 @@
+                            ====================        TESTING         ====================
+
+Each input is represented by a 4*4 subsection of the playing grid, where a 1 is equivalent to a living cell and a 0 is
+equivalent to a dead cell. Expected outputs were recorded manually from playthegameoflife.com, and actual output was 
+recorded manually from the currentGrid variable in my MATLAB script. This demonstrates that the gui-free v1 file works,
+and the fact that the expected output is reflected also in the gui grid mean the ensuing versions work aswell. 
+
+INPUT       EXPECTED OUTPUT                                         ACTUAL OUTPUT
+
+0 0 0 0     0 0 0 0 (Stable)                                        0 0 0 0 (Stable)
+0 1 1 0     0 1 1 0                                                 0 1 1 0
+0 1 1 0     0 1 1 0                                                 0 1 1 0
+0 0 0 0     0 0 0 0                                                 0 0 0 0
+
+0 0 0 0     0 0 0 0  ->  0 1 1 0  ->  0 1 1 0 (Stable)              0 0 0 0  ->  0 1 1 0  ->  0 1 1 0 (Stable)
+0 1 1 1     0 0 1 0      0 1 1 0      1 0 0 1                       0 0 1 0      0 1 1 0      1 0 0 1
+0 1 0 0     0 1 1 0      0 1 1 0      0 1 1 0                       0 1 1 0      0 1 1 0      0 1 1 0
+0 0 0 0     0 1 0 0      0 0 0 0      0 0 0 0                       0 1 0 0      0 0 0 0      0 0 0 0
+
+0 0 1 0     0 0 0 0  ->  0 0 1 0 (Stable)                           0 0 0 0  ->  0 0 1 0 (Stable)
+0 0 1 0     0 1 1 1      0 1 0 1                                    0 1 1 1      0 1 0 1
+0 0 1 0     0 1 1 1      0 1 0 1                                    0 1 1 1      0 1 0 1
+0 0 1 0     0 0 0 0      0 0 1 0                                    0 0 0 0      0 0 1 0
+
+0 0 0 0     0 0 0 0 (Death)                                         0 0 0 0 (Death)
+0 0 0 0     0 0 0 0                                                 0 0 0 0
+0 1 1 0     0 0 0 0                                                 0 0 0 0
+0 0 0 0     0 0 0 0                                                 0 0 0 0
+
+0 0 0 0     0 0 0 0 1 0 0 0 0  ->  0 0 0 0 0 0 0 0 0 (Repeats)      0 0 0 0 1 0 0 0 0  ->  0 0 0 0 0 0 0 0 0 (Repeats)
+0 0 1 0     0 0 0 0 1 0 0 0 0      0 0 0 1 1 1 0 0 0                0 0 0 0 1 0 0 0 0      0 0 0 1 1 1 0 0 0
+0 1 1 1     0 0 0 0 1 0 0 0 0      0 0 0 0 0 0 0 0 0                0 0 0 0 1 0 0 0 0      0 0 0 0 0 0 0 0 0
+0 0 0 0     0 0 0 0 0 0 0 0 0      0 1 0 0 0 0 0 1 0                0 0 0 0 0 0 0 0 0      0 1 0 0 0 0 0 1 0
+            1 1 1 0 0 0 1 1 1      0 1 0 0 0 0 0 1 0                1 1 1 0 0 0 1 1 1      0 1 0 0 0 0 0 1 0
+            0 0 0 0 0 0 0 0 0      0 1 0 0 0 0 0 1 0                0 0 0 0 0 0 0 0 0      0 1 0 0 0 0 0 1 0
+            0 0 0 0 1 0 0 0 0      0 0 0 0 0 0 0 0 0                0 0 0 0 1 0 0 0 0      0 0 0 0 0 0 0 0 0
+            0 0 0 0 1 0 0 0 0      0 0 0 1 1 1 0 0 0                0 0 0 0 1 0 0 0 0      0 0 0 1 1 1 0 0 0
+            0 0 0 0 1 0 0 0 0      0 0 0 0 0 0 0 0 0                0 0 0 0 1 0 0 0 0      0 0 0 0 0 0 0 0 0
+
+

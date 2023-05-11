@@ -1,31 +1,32 @@
 #include <stdio.h>
-#include <stdbool.h>
 
-int main() {
-  int ages[10], age, max = 0, min = 150, sum = 0, i;
-  double mean;
-  bool reading = true;
-  printf("Enter up to 10 ages, then press enter (-1 to terminate early): ");
-  for (i = 0; i < 10; i++) {
+int main(void) {
+  int ages[10];
+  int num_ages = 0;
+  int age_sum = 0;
+  int max_age = 0;
+  int min_age = 150;  // max possible age
+  int age;
+
+  printf("Enter up to %d ages, or -1 to stop:\n", 10);
+  while (num_ages < 10) {
     scanf("%d", &age);
     if (age == -1) {
       break;
+    } else if (age < 0 || age > 150) {
+      printf("Invalid age. Please enter a valid age:\n");
+      continue;
     }
-    else if (age < 0 || age > 150) {
-      printf("Enter a valid age.");
+    ages[num_ages++] = age;
+    age_sum += age;
+    if (age > max_age) {
+      max_age = age;
     }
-    else {
-      ages[i] = age;
-      sum += age;
-      if (age > max) {
-        max = age;
-      }
-      if (age < min) {
-        min = age;
-      }
+    if (age < min_age) {
+      min_age = age;
     }
   }
-  mean = sum / i;
-  printf("%d %d %.1f", max, min, mean);
+
+  printf("%d %d %.1f\n", max_age, min_age, (float)age_sum / num_ages);
   return 0;
 }

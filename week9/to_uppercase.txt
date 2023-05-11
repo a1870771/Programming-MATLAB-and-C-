@@ -1,0 +1,3 @@
+input                         output
+abcdefghijklmnopqrstuvwxyz    ABCDEFGHIJKLMNOPQRST
+larkin,jack                   LARKIN,JACK

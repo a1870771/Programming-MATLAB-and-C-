@@ -6,49 +6,46 @@ int main(void) {
   int oddCount = 0;
   int evenCount = 0;
 
-  printf("Enter the number of integers: "); // get total number of integers
+  printf("Enter the number of integers: ");  // get total number of integers
   scanf("%d", &n);
-  
+
   int* nums = (int*)malloc(n * sizeof(int));
 
-  printf("Enter the integers: "); // read integer list and count odds/evens
+  printf("Enter the integers: ");  // read integer list and count odds/evens
   for (int i = 0; i < n; i++) {
     scanf("%d", &nums[i]);
     if (nums[i] % 2 == 0) {
-        evenCount ++;
-    }
-    else {
-        oddCount ++;
+      evenCount++;
+    } else {
+      oddCount++;
     }
   }
-
 
   int* odds = (int*)malloc(oddCount * sizeof(int));
   int* evens = (int*)malloc(evenCount * sizeof(int));
 
   int oddIndex = 0, evenIndex = 0;
 
-  for (int i = 0; i < n; i ++) {
+  for (int i = 0; i < n; i++) {
     if (nums[i] % 2 == 0) {
       evens[evenIndex] = nums[i];
-      evenIndex ++;
-    }
-    else {
+      evenIndex++;
+    } else {
       odds[oddIndex] = nums[i];
-      oddIndex ++;
+      oddIndex++;
     }
   }
 
-  for (int i = 0; i < oddCount; i++) { // print odds
+  for (int i = 0; i < oddCount; i++) {  // print odds
     printf("%d ", odds[i]);
   }
-  printf("\n"); 
-  
-  for (int i = 0; i < evenCount; i++) { // print evens
+  printf("\n");
+
+  for (int i = 0; i < evenCount; i++) {  // print evens
     printf("%d ", evens[i]);
   }
   printf("\n");
-  
+
   free(nums);
   free(evens);
   free(odds);

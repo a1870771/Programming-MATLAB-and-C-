@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
   int capacity = 5;
   int size = 0;
   double *temps = malloc(capacity * sizeof(double));

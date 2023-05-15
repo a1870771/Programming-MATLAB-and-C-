@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
   int n;
   printf("Enter the number of temperatures: ");
   scanf("%d", &n);
@@ -16,7 +16,7 @@ int main() {
   for (int i = n - 1; i >= 0; i--) {
     printf("%.1f ", temps[i]);
   }
-  printf("\n"); 
+  printf("\n");
 
   free(temps);
   return 0;

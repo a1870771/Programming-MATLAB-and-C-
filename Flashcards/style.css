@@ -1,0 +1,81 @@
+*{
+  background-color: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#card{
+  position: relative;
+  margin: auto;
+  margin-top: 10vh;
+  font-size: 2rem;
+  border: white solid 2px;
+  width: min(80vw, 350px);
+  height: min(80vh, 500px);
+  box-shadow: 12px 12px black, 
+  12px 12px 0px 1.6px white;
+  display: flex;
+  align-items: center;
+}
+
+#card:hover{
+  cursor: pointer;
+}
+
+#contents{
+  margin: auto;
+}
+
+.nav-button{
+  position: relative;
+  top: 50px;
+  margin: auto;
+  text-decoration: none;
+  width: min-content;
+  padding: 20px 22px;
+  font-size: 1.5rem;
+  border: white 2px solid;
+  border-radius: 50%;
+}
+
+.nav-button:hover{
+  background-color: darkkhaki;
+  cursor: pointer;
+}
+
+.nav-button:active{
+  background-color: white;
+}
+
+.nav-button::selection {
+  background-color: transparent;
+  color: white;
+}
+
+#buttons{
+  display: flex;
+  max-width: min(80vw, 350px);
+  margin: auto;
+}
+
+#decks{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(6, auto);
+  width: min(82vw, 360px);
+  margin: auto;
+}
+.deck{
+  position: relative;
+  margin: auto;
+  margin-top: 10vh;
+  font-size: 2rem;
+  border: white solid 2px;
+  width: 130px;
+  height: 130px;
+  box-shadow: 12px 12px black, 
+  12px 12px 0px 1.6px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
